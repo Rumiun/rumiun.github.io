@@ -1,23 +1,57 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>2022高考倒计时</title>
-</head>
 <style>
-.number {
-color: #ffffff;
-font-family: myFirstFont;
-src: url(res/ttf/Kollektif-Bold.ttf);
-}
+@font-face
+    {
+	font-family: myFirstFont;
+	src: url('res/ttf/Kollektif-Bold.ttf');
+	color: white;
+	}
+@font-face
+    {
+	font-family: mySecondFont;
+	src: url('res/ttf/SourceHanSansCN-Normal');
+	}
+
 </style>
+</head>
 <body width="900px" height="383px">
  
-<img border='0' src='res/image/Background.png' width='100%' height='100%' style='position: absolute;left:0px;top:0px;z-index: -1'>
- <h1 class="number">99</h1>
-<h2>54</h2>
+<img border='0' src='res/pic/Background.png' width='100%' height='100%' style='position: absolute;left:0px;top:0px;z-index: -1'>
+ <p id="day" style='font-family:myFirstFont;color:white;position:absolute;left:180px;bottom:-90px;font-size: 1000%'></p>
+ <p id="date"style='font-family:myFirstFont;color:black;position:absolute;left:645px;bottom:82px;font-size: 100%'></p>
+ <p id="week"style='font-family:mySecondFont;color:white;position:absolute;left:742px;bottom:83px;font-size: 100%'></p>
+ <script>
+   var timestamp = Date.parse(new Date());
+   var day = (1654531200 - (timestamp / 1000)) / 86400;
+   day = Math.trunc(day);
+   document.getElementById("day").innerHTML=day;
+   var date = new Date();
+   var y = date.getFullYear();
+   var m = (date.getMonth())+1;
+   var d = date.getDate();
+   var WEEK = (date.getDay())+1;
+   var veek;
+   if (WEEK = 1){
+       week = "一";
+   } else if (WEEK = 2){
+       week = "二";
+   }else if (WEEK = 3){
+       week = "三";
+   } else if (WEEK = 4){
+       week = "四";
+   } else if (WEEK = 5){
+       week = "五";
+   } else if (WEEK = 6){
+       week = "六";
+   } else if (WEEK = 7){
+       week = "日";
+   }
+   document.getElementById("date").innerHTML=y + "." + m + "." + d;
+   document.getElementById("week").innerHTML="星期" + week;
+ </script>
 </body>
-
-
 </html>
